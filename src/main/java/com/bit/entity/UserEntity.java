@@ -1,0 +1,10 @@
+package com.bit.entity;
+
+import lombok.Data;
+
+@Data
+public class UserEntity {
+    private Long id;
+    private String username;
+    private String fullName;
+}
