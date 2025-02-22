@@ -1,8 +1,11 @@
 package com.bit.service;
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.bit.entity.UserEntity;
 @Service
 public interface UserService {
-    UserEntity findById(Long id);    
+    List<UserEntity> getAll();
+    UserEntity createUserEntity(UserEntity userEntity);
 }
