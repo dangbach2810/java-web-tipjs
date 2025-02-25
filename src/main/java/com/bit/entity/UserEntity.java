@@ -21,7 +21,7 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "username", columnDefinition = "varchar(255) comment 'user name'", nullable = false)
-    private String username;
+    private String userName;
     @Column(name = "fullname", columnDefinition = "varchar(255) comment 'full name'", nullable = false, unique = true)
     private String fullName;
 }
