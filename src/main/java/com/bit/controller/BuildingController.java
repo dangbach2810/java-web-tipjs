@@ -23,18 +23,19 @@ public class BuildingController {
     @Autowired
     private BuildingService buildingService;
     @PostMapping
-    public ResponseEntity<BuildingDTO> createBuilding(@RequestBody BuildingDTO buildingDTO) {
+    public String createBuilding(@RequestBody BuildingDTO buildingDTO) {
         BuildingEntity buildingEntity = new BuildingEntity();
         List<RentAreaEntity> rentAreaEntities = new ArrayList<>();
         for(Integer rentArea : buildingDTO.getRentAreas()) {
             RentAreaEntity rentAreaEntity = new RentAreaEntity();
             rentAreaEntity.setValue(rentArea);
+            rentAreaEntity.setBuilding(buildingEntity);
             rentAreaEntities.add(rentAreaEntity);
         }
         buildingEntity.setName(buildingDTO.getName());
         buildingEntity.setRentAreaEntitys(rentAreaEntities);
         buildingService.createBuilding(buildingEntity);
-        return (ResponseEntity<BuildingDTO>) ResponseEntity.ok();
+        return "Success";
     }
 
     @GetMapping

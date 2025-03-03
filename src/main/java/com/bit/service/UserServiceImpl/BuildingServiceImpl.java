@@ -8,15 +8,18 @@ import com.bit.repository.BuildingRepository;
 import com.bit.dto.BuildingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 @Service
 public class BuildingServiceImpl implements BuildingService {
     @Autowired   
     private BuildingRepository buildingRepository;
 
     @Override
+    @Transactional
     public BuildingEntity createBuilding(BuildingEntity buildingEntity) {
         return buildingRepository.save(buildingEntity);
     }
+
 
     @Override
     public List<BuildingDTO> getAll() {
