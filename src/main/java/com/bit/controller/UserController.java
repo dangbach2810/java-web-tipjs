@@ -17,25 +17,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 //     List<UserEntity> findByUserName(String userName);
 //     List<UserEntity> findByUserNameStartWith(String userName);
 //     UserEntity findByUserNameAndFullName(String userName, String fullName321123);
-@RestController
-@RequestMapping("api/user")
+//@RestController
+//@RequestMapping("api/user")
 public class UserController {
 
-    @Autowired
-    private UserService userService;
-    @GetMapping("/v1")
-    public UserEntity getUserInfo(){
-        return userService.findById(1l);
-    }
-
-    @GetMapping("{id}")
-    public UserEntity getUserById(@PathVariable Long id) {
-        return userService.findById(id);
-    }
-    
-    @GetMapping
-    public List<UserEntity> getUserByName(@RequestParam String fullName) {
-        return userService.findByFullNameStartWith(fullName);
-    }
+//    @Autowired
+//    private UserService userService;
+//    @GetMapping("/v1")
+//    public UserEntity getUserInfo(){
+//        return userService.findById(1l);
+//    }
+//
+//    @GetMapping("{id}")
+//    public UserEntity getUserById(@PathVariable Long id) {
+//        return userService.findById(id);
+//    }
+//
+//    @GetMapping
+//    public List<UserEntity> getUserByName(@RequestParam String fullName) {
+//        return userService.findByFullNameStartWith(fullName);
+//    }
     
 }

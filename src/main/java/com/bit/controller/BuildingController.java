@@ -15,12 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.bit.entity.BuildingEntity;
 import com.bit.entity.RentAreaEntity;
 import java.util.*;
-
-@RestController
-@RequestMapping("api/building")
+//
+//@RestController
+//@RequestMapping("api/building")
 public class BuildingController {
 
-    @Autowired
+//    @Autowired
     private BuildingService buildingService;
     @PostMapping
     public String createBuilding(@RequestBody BuildingDTO buildingDTO) {
