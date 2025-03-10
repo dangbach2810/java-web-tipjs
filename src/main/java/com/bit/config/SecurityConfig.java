@@ -2,25 +2,40 @@ package com.bit.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity //active spring web security
+@EnableMethodSecurity(jsr250Enabled = true)
 public class SecurityConfig {
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http.formLogin(formLogin -> formLogin.loginProcessingUrl("/login"));
+        http.authorizeHttpRequests(req -> req
+//                .requestMatchers("api/v1/auth/login", "api/v1/auth/register").permitAll()
+//                .requestMatchers("v1/admin/vip").hasRole("admin")
+                .anyRequest().authenticated()
+        );
+        return http.build();
+    }
+
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails admin = User
-                .withUsername("CR7")
-                .password("{noop}admin")
+                .withUsername("admin")
+                .password("{noop}123")
                 .roles("admin", "user")
                 .build();
         UserDetails user = User.withDefaultPasswordEncoder()
-                .username("M10")
-                .password("user")
+                .username("user")
+                .password("123")
                 .roles("user")
                 .build();
         return new InMemoryUserDetailsManager(admin,user);
